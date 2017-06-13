@@ -73,7 +73,7 @@ def missingEntries(countries, years):
     # fill in missing years
     for country, data in misValues.items():        
         for year in data:
-            countries[country][year] = [0.0, 0.0, 0.0]
+            countries[country][year] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 
     print(totMissing, "missing years in", len(misValues), "countries")
 
