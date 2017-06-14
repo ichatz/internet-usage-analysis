@@ -1,10 +1,11 @@
 import csv
 import pycountry
+import pycountry_convert
 
 # filename - dataset to load
 # dataColumn - column of dataset to convert to float
 # position - position within the list to place value
-def loadDataset(countries, years, filename, dataColumn, position):
+def loadDataset(continents, countries, years, filename, dataColumn, position):
     f = open(filename)
     newCountries = 0
     totValues = 0
@@ -13,9 +14,17 @@ def loadDataset(countries, years, filename, dataColumn, position):
             key = row[0]
             
             # lookup country
-            country = pycountry.countries.lookup(key)             
-            
+            country = pycountry.countries.lookup(key)
             name = country.name
+
+            # lookup continent
+            cn_continent = pycountry_convert.convert_country_alpha2_to_continent(country.alpha_2)
+
+            if not cn_continent in continents:
+                continents[cn_continent] = set()
+
+            continents[cn_continent].add(country.name)
+
             year = int(row[1])
             value = float(row[dataColumn])
             
