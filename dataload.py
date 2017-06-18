@@ -38,7 +38,7 @@ def loadDataset(continents, countries, years, filename, dataColumn, position):
                 if not (year in countries[row[0]]):        
                     # first encounter of this year
                     # construct list with missing values for this year
-                    countries[name][year] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                    countries[name][year] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 
                 countries[name][year][position] = value
 
@@ -82,7 +82,7 @@ def missingEntries(countries, years):
     # fill in missing years
     for country, data in misValues.items():        
         for year in data:
-            countries[country][year] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+            countries[country][year] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 
     print(totMissing, "missing years in", len(misValues), "countries")
 
